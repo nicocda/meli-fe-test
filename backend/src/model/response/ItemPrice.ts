@@ -1,5 +1,5 @@
 export default interface ItemPrice {
-    "currency": String,
-    "amount": Number,
-    "decimals": Number
+    currency: String,
+    amount: Number,
+    decimals: Number
 }
