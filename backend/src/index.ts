@@ -1,18 +1,21 @@
 import express from 'express';
 import axios from 'axios';
-import config from './config/config.axios';
-import { exposeItemEndpoints } from './controller/item';
+import configAxios from './config/config.axios';
+// import cors from 'cors'
+// import configCors from './config/config.cors';
+import itemController from './controller/item';
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Well done!');
-})
+console.log('Configurando axios')
+axios.defaults.baseURL = configAxios.baseURL;
+axios.defaults.timeout = configAxios.timeout;
 
-axios.defaults.baseURL = config.axios.baseURL;
-axios.defaults.timeout = config.axios.timeout;
-axios.defaults.headers.post['Content-Type'] = config.axios.contentType;
+//console.log('Configurando Seguridad')
+// app.use(cors(configCors));
 
-//exposeItemEndpoints(app);
+console.log('Configurando Agregando rutas')
+app.use(itemController);
 
 app.listen(3000, () => {
     console.log('The application is listening on port 3000!');

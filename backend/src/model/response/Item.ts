@@ -1,10 +1,10 @@
 import ItemPrice from './ItemPrice'
 
 export default interface Item {
-    id: String,
-    title: String,
+    id: string,
+    title: string,
     price: ItemPrice,
-    picture: String,
-    condition: String,
-    free_shipping: Boolean
+    picture: string,
+    condition: string,
+    free_shipping: boolean
 }
