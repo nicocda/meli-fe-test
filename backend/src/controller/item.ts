@@ -1,23 +1,44 @@
-import { Application, Request, Response } from "express";
-import { getItems } from "../services/meliService";
-const _controllerRoute = '/api/items'
+import { Router } from "express";
+import { getItems, getOneItem } from "../services/meliService";
 
+const CONTROLLER_ROUTE_NAME = '/api/items';
+const _controllerRoute = Router();
+console.log('Using Item Controller')
 
+// Endpoint to search items by query
+_controllerRoute.get(CONTROLLER_ROUTE_NAME, async (req, res) => {
+    const q = req.query.q;
+    console.log('Getting All User by query \r\n query:' + q)
 
-export const exposeItemEndpoints = (app: Application) => {
-    console.log('Register ' + _controllerRoute)
-    return app.get(_controllerRoute, (req: Request, res: Response) => {
-        console.log(`request: ${req}`);
-        console.log(`quest: ${req.query}`)
-        const query = req.query.q;
+    //Valido Request
+    if (!q)
+        return res.status(400).send({ message: "Ingrese un parametro de búsqueda (?q=:searchText)" })
 
-        console.log(`text to search: ${query}`)
+    await getItems(q.toString()).then((data) => {
+        console.log('Everything is OK')
+        res.status(data && data.items.length > 0 ? 200 : 204).json(data)
+    }).catch((error) => {
+        console.log('Error: ' + JSON.stringify(error))
+        // console.log('Error: ' + error.response.statusText)
+        res.status(500).send({ message: JSON.stringify(error) });
+    });
 
-        if (!query)
-            return res.status(204);
+});
 
-        //get data from external resource
-        return getItems(query.toString())
-    }
-    )
-}
+// Endpoint to finde one item
+_controllerRoute.get(CONTROLLER_ROUTE_NAME + '/:id', async (req, res) => {
+    const id = req.params.id;
+
+    //Valido Request nulo
+    if (!id)
+        return res.status(400).send({ message: "Ingrese un id" })
+
+    await getOneItem(id).then((data) => {
+        res.status(data && data.items.length > 0 ? 200 : 204).json(data)
+    }).catch((error) => {
+        res.status(error.response.status || 500).send({ message: error.response.statusText });
+    });
+
+});
+
+export default _controllerRoute;

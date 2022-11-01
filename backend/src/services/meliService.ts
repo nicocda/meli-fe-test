@@ -1,18 +1,47 @@
 import axios from 'axios'
 import ItemPrice from '../model/response/ItemPrice'
 import ResponseData from '../model/response/ResponseData'
-import { ResultPrice, SearchDataResponse } from '../model/SearchDataResponse'
+import { SearchDataResponse } from '../model/SearchDataResponse'
 import configAuthor from '../config/config.author'
 
-export const getItems = async (text: string | null): Promise<ResponseData> => {
 
-    if (!text) throw 'Ingrese un parametro de búsqueda';
+export const getItems = async (text: string): Promise<ResponseData> => {
+    console.log('Api Service')
 
-    const response = await axios.get<SearchDataResponse>('search?q=' + text);
-    return dataTransform(response.data);
+    console.log("base: " + axios.defaults.baseURL)
+    try {
+
+        const response = await axios.get<SearchDataResponse>('search', { params: { q: text } });
+        return dataTransform(response.data);
+    }
+    catch (ex) {
+        console.log("ex. " + ex)
+        throw JSON.stringify(ex)
+    }
+
 }
 
+
+export const getOneItem = async (id: string): Promise<ResponseData> => {
+    console.log('Api Service')
+
+    console.log("base: " + axios.defaults.baseURL)
+    try {
+
+        const response = await axios.get('/', { params: { id: id } });
+        console.log("Response. " + response.data)
+        return dataTransform(response.data as SearchDataResponse);
+    }
+    catch (ex) {
+        console.log("ex. " + ex)
+        throw JSON.stringify(ex)
+    }
+
+}
+
+
 const dataTransform = (data: SearchDataResponse): ResponseData => {
+
     if (!data || !data.results)
         return {
             author: configAuthor.author,
@@ -25,7 +54,11 @@ const dataTransform = (data: SearchDataResponse): ResponseData => {
             return {
                 id: m.id,
                 title: m.title,
-                price: priceTransform(m.prices.find(p => p.amount === m.price) as ResultPrice),
+                price: {
+                    currency: m.currency_id,
+                    amount: m.price,
+                    decimals: 0
+                },
                 picture: m.thumbnail,
                 condition: m.condition,
                 free_shipping: m.shipping?.free_shipping
@@ -33,11 +66,5 @@ const dataTransform = (data: SearchDataResponse): ResponseData => {
         })
     }
 }
-const priceTransform = (c: ResultPrice): ItemPrice => (
-    {
-        currency: c.currency_id,
-        amount: c.amount,
-        decimals: 0
-    }
-)
+
 
