@@ -12,6 +12,7 @@ export const ItemList = () => {
     const location = useLocation();
     const [categories, setCategories] = useState<string[]>([])
     const [items, setItems] = useState<Item[]>([])
+    const [loading, setLoading] = useState(true);
 
 
     const searchText = location.search;
@@ -27,12 +28,16 @@ export const ItemList = () => {
                 if (items !== response.data.items)
                     setItems(response.data.items);
             }
-        });
+        }).catch(error => {
+
+        }).finally(() => setLoading(false));
 
         //Suprimo advertencia, xq si lo configuro como me lo pide loopea infinito
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchText])
 
+    if (loading)
+        return (<>Cargando...</>)
 
     if (!searchText)
         return (<>Sin texto</>);

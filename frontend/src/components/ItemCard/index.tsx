@@ -2,7 +2,6 @@ import Item from '../../model/Item'
 import './index.scss'
 import freeShipping from './../../assets/ic_shipping.png'
 import { useNavigate } from 'react-router-dom'
-import { PriceFormat } from '../PriceFormat'
 import { Price } from '../Price'
 
 type ItemCardProps = {
@@ -18,11 +17,11 @@ export const ItemCard = ({ item }: ItemCardProps) => {
     return (
         <>
             <div className='card-container'>
-                <a href={`/api/items/${item.id}`}>
-                    <div >
+                <div className='card-item-picture'>
+                    <a href={`/api/items/${item.id}`}>
                         <img data-testid='item-picture' className='card-picture' alt='itempicture' src={item.picture} />
-                    </div>
-                </a>
+                    </a>
+                </div>
                 <div className='item-detail'>
                     <div className='card-price-section'>
                         <div onClick={handleClick}>
@@ -31,7 +30,7 @@ export const ItemCard = ({ item }: ItemCardProps) => {
                             </div>
                         </div>
                         <div onClick={handleClick}>
-                            <div data-testid='item-shipping' className='card-free-shiping-container'>{item.free_shipping ? <img className='card-free-shipping-img' src={freeShipping} alt="free shipping"></img> : ''}</div>
+                            <div data-testid='item-shipping' className='card-free-shiping-container'>{item.free_shipping ? <img className='card-free-shipping-img' src={freeShipping} alt="free shipping" title="Envio Gratis"></img> : ''}</div>
                         </div>
 
                     </div>

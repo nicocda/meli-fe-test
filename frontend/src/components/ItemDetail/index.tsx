@@ -5,7 +5,6 @@ import Item from '../../model/Item';
 import ResponseOne from '../../model/ResponseOne';
 import { BreadCrumb } from '../BreadCrumb';
 import { Price } from '../Price';
-import { PriceFormat } from '../PriceFormat';
 import './index.scss'
 
 const TranslateCondition = (condition: string): string => {
