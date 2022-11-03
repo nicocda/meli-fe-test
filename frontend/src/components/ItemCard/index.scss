@@ -23,6 +23,10 @@ $BIG_MARGIN : 32px;
     flex-direction: row;
 }
 
+.card-item-picture {
+    width: 30%;
+}
+
 .card-picture {
     width: 180px;
     height: 180px;
@@ -35,7 +39,7 @@ $BIG_MARGIN : 32px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 100%;
+    width: 60%;
     margin-top: 32px;
     padding-left: 35px;
 }
@@ -73,7 +77,7 @@ $BIG_MARGIN : 32px;
 
 .card-location {
     font-size: 12px;
-    text-align: right;
-    margin: 50px 150px 0 0;
+    text-align: left;
+    width: 10%;
 
 }
