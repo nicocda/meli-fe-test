@@ -1,0 +1,374 @@
+{
+    "id": "MLA812447160",
+    "site_id": "MLA",
+    "title": "Film Tricapa iPod Nano Touch 6 Generacion Combo 5 Unidades",
+    "subtitle": null,
+    "seller_id": 10504118,
+    "category_id": "MLA455701",
+    "official_store_id": null,
+    "price": 594,
+    "base_price": 594,
+    "original_price": null,
+    "currency_id": "ARS",
+    "initial_quantity": 70,
+    "available_quantity": 50,
+    "sold_quantity": 5,
+    "sale_terms": [
+        {
+            "id": "WARRANTY_TIME",
+            "name": "Tiempo de garantía",
+            "value_id": null,
+            "value_name": "3 días",
+            "value_struct": {
+                "number": 3,
+                "unit": "días"
+            },
+            "values": [
+                {
+                    "id": null,
+                    "name": "3 días",
+                    "struct": {
+                        "number": 3,
+                        "unit": "días"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "WARRANTY_TYPE",
+            "name": "Tipo de garantía",
+            "value_id": "2230280",
+            "value_name": "Garantía del vendedor",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230280",
+                    "name": "Garantía del vendedor",
+                    "struct": null
+                }
+            ]
+        }
+    ],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2019-09-02T14:59:51.000Z",
+    "stop_time": "2039-08-28T04:00:00.000Z",
+    "condition": "new",
+    "permalink": "https://articulo.mercadolibre.com.ar/MLA-812447160-film-tricapa-ipod-nano-touch-6-generacion-combo-5-unidades-_JM",
+    "thumbnail_id": "976401-MLA51245388828_082022",
+    "thumbnail": "http://http2.mlstatic.com/D_976401-MLA51245388828_082022-I.jpg",
+    "secure_thumbnail": "https://http2.mlstatic.com/D_976401-MLA51245388828_082022-I.jpg",
+    "pictures": [
+        {
+            "id": "976401-MLA51245388828_082022",
+            "url": "http://http2.mlstatic.com/D_976401-MLA51245388828_082022-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_976401-MLA51245388828_082022-O.jpg",
+            "size": "500x405",
+            "max_size": "1251x1014",
+            "quality": ""
+        },
+        {
+            "id": "684052-MLA51245540077_082022",
+            "url": "http://http2.mlstatic.com/D_684052-MLA51245540077_082022-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_684052-MLA51245540077_082022-O.jpg",
+            "size": "500x498",
+            "max_size": "1269x1266",
+            "quality": ""
+        },
+        {
+            "id": "4192-MLA2776758135_062012",
+            "url": "http://http2.mlstatic.com/D_4192-MLA2776758135_062012-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_4192-MLA2776758135_062012-O.jpg",
+            "size": "411x360",
+            "max_size": "411x360",
+            "quality": ""
+        },
+        {
+            "id": "4150-MLA2776758314_062012",
+            "url": "http://http2.mlstatic.com/D_4150-MLA2776758314_062012-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_4150-MLA2776758314_062012-O.jpg",
+            "size": "500x443",
+            "max_size": "600x532",
+            "quality": ""
+        },
+        {
+            "id": "4188-MLA2776770466_062012",
+            "url": "http://http2.mlstatic.com/D_4188-MLA2776770466_062012-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_4188-MLA2776770466_062012-O.jpg",
+            "size": "300x300",
+            "max_size": "300x300",
+            "quality": ""
+        }
+    ],
+    "video_id": null,
+    "descriptions": [],
+    "accepts_mercadopago": true,
+    "non_mercado_pago_payment_methods": [],
+    "shipping": {
+        "mode": "me2",
+        "methods": [],
+        "tags": [
+            "self_service_in"
+        ],
+        "dimensions": null,
+        "local_pick_up": false,
+        "free_shipping": false,
+        "logistic_type": "cross_docking",
+        "store_pick_up": false
+    },
+    "international_delivery_mode": "none",
+    "seller_address": {
+        "city": {
+            "id": "TUxBQlNBTjgzMjRa",
+            "name": "San Nicolás"
+        },
+        "state": {
+            "id": "AR-C",
+            "name": "Capital Federal"
+        },
+        "country": {
+            "id": "AR",
+            "name": "Argentina"
+        },
+        "search_location": {
+            "neighborhood": {
+                "id": "TUxBQlNBTjgzMjRa",
+                "name": "San Nicolás"
+            },
+            "city": {
+                "id": "TUxBQ0NBUGZlZG1sYQ",
+                "name": "Capital Federal"
+            },
+            "state": {
+                "id": "TUxBUENBUGw3M2E1",
+                "name": "Capital Federal"
+            }
+        },
+        "id": 68733300
+    },
+    "seller_contact": null,
+    "location": {},
+    "coverage_areas": [],
+    "attributes": [
+        {
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": "9344",
+            "value_name": "Apple",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "9344",
+                    "name": "Apple",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "CONNECTOR_TYPE",
+            "name": "Tipo de conector",
+            "value_id": "-1",
+            "value_name": null,
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "DATA_STORAGE_CAPACITY",
+            "name": "Capacidad de almacenamiento de datos",
+            "value_id": "-1",
+            "value_name": null,
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "INCLUDES_HEADPHONES",
+            "name": "Incluye auriculares",
+            "value_id": "242084",
+            "value_name": "No",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "ITEM_CONDITION",
+            "name": "Condición del ítem",
+            "value_id": "2230284",
+            "value_name": "Nuevo",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230284",
+                    "name": "Nuevo",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": null,
+            "value_name": "nano 6th",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": null,
+                    "name": "nano 6th",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "PLAYER_TYPE",
+            "name": "Tipo de reproductor",
+            "value_id": "6862362",
+            "value_name": "MP3",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "6862362",
+                    "name": "MP3",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "WITH_BLUETOOTH",
+            "name": "Con Bluetooth",
+            "value_id": "242084",
+            "value_name": "No",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "WITH_CAMERA",
+            "name": "Con cámara",
+            "value_id": "242084",
+            "value_name": "No",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "WITH_TOUCHSCREEN",
+            "name": "Con pantalla táctil",
+            "value_id": "242085",
+            "value_name": "Sí",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "242085",
+                    "name": "Sí",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        }
+    ],
+    "warnings": [],
+    "listing_source": "",
+    "variations": [
+        {
+            "id": 94731793872,
+            "price": 594,
+            "attribute_combinations": [
+                {
+                    "id": "COLOR",
+                    "name": "Color",
+                    "value_id": "52055",
+                    "value_name": "Blanco",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "52055",
+                            "name": "Blanco",
+                            "struct": null
+                        }
+                    ]
+                }
+            ],
+            "available_quantity": 50,
+            "sold_quantity": 5,
+            "sale_terms": [],
+            "picture_ids": [
+                "976401-MLA51245388828_082022",
+                "684052-MLA51245540077_082022",
+                "4192-MLA2776758135_062012",
+                "4150-MLA2776758314_062012",
+                "4188-MLA2776770466_062012"
+            ],
+            "catalog_product_id": null
+        }
+    ],
+    "status": "active",
+    "sub_status": [],
+    "tags": [
+        "brand_verified",
+        "extended_warranty_eligible",
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "immediate_payment",
+        "cart_eligible"
+    ],
+    "warranty": "Garantía del vendedor: 3 días",
+    "catalog_product_id": null,
+    "domain_id": "MLA-DIGITAL_PORTABLE_MEDIA_PLAYERS",
+    "parent_item_id": null,
+    "differential_pricing": null,
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2019-09-02T14:59:51.000Z",
+    "last_updated": "2022-10-28T17:30:17.000Z",
+    "health": 0.88,
+    "catalog_listing": false,
+    "channels": [
+        "marketplace",
+        "mshops"
+    ]
+}

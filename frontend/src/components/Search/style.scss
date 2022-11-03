@@ -1,0 +1,45 @@
+@import '../../App.scss';
+
+.nav-header-search {
+    display: table;
+    border-collapse: collapse;
+    width: 65%;
+
+    div {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .nav-header-search-input {
+        width: 100%;
+
+        input {
+            width: 100%;
+            display: block;
+            padding: 10px 12px;
+            border-radius: 4px 0px;
+            border: none;
+            font-size: 18px;
+
+            &::placeholder {
+                color: $LIGHT_GREY;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .nav-header-search-button {
+        cursor: pointer;
+        background: #eee;
+        color: #777;
+        padding: 0 16px;
+        border-radius: 0px 4px;
+
+        &:focus {
+            outline: 0.2px solid $LIGHT_GREY;
+        }
+    }
+}

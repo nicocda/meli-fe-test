@@ -1,6 +1,4 @@
 export default {
-    author: {
-        name: "Nicolas",
-        lastname: "Giordano"
-    },
+    name: "Nicolas",
+    lastname: "Giordano"
 };

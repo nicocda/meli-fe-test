@@ -1,0 +1,64 @@
+{
+    "author": {
+        "name": "Nicolas",
+        "lastname": "Giordano"
+    },
+    "categories": [
+        "categories",
+        "not implemented yet",
+        "test"
+    ],
+    "items": [
+        {
+            "id": "MLA1147529547",
+            "title": "Smart Tv Samsung Series 6 Qn55q60aagczb Qled 4k 55  220v - 240v",
+            "price": {
+                "currency": "ARS",
+                "amount": 207999,
+                "decimals": 0
+            },
+            "picture": "http://http2.mlstatic.com/D_646123-MLA48156948697_112021-I.jpg",
+            "condition": "new",
+            "free_shipping": true,
+            "location": "Rosario"
+        },
+        {
+            "id": "MLA1147686760",
+            "title": "Smart Tv Tcl P725-series 55p725 Dled 4k 55  100v/240v",
+            "price": {
+                "currency": "ARS",
+                "amount": 122999,
+                "decimals": 0
+            },
+            "picture": "http://http2.mlstatic.com/D_621435-MLA51571231623_092022-I.jpg",
+            "condition": "new",
+            "free_shipping": true,
+            "location": "Cañada Rosquin"
+        },
+        {
+            "id": "MLA904833049",
+            "title": "Smart Tv Samsung Series 5 Un43t5300agczb Led Full Hd 43  220v - 240v",
+            "price": {
+                "currency": "ARS",
+                "amount": 85999,
+                "decimals": 0
+            },
+            "picture": "http://http2.mlstatic.com/D_886670-MLA44628265236_012021-I.jpg",
+            "condition": "new",
+            "free_shipping": true,
+            "location": "Galvez"
+        },
+        {
+            "id": "MLA1150190526",
+            "title": "Smart Tv Philips 65pud7906/77 Led 4k 65  110v/240v",
+            "price": {
+                "currency": "ARS",
+                "amount": 209999,
+                "decimals": 0
+            },
+            "picture": "http://http2.mlstatic.com/D_803275-MLA48707824564_122021-I.jpg",
+            "condition": "new",
+            "free_shipping": true
+        }
+    ]
+}

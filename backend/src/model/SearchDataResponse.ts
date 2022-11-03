@@ -1,21 +1,31 @@
+import GetItemResultBase from "./GetItemResultBase"
+
 export interface SearchDataResponse {
     site_id: string,
     query: string,
-    results: Array<Result>,
+    results: Result[],
+    filters: ResultFilter[]
 }
 
-export interface Result {
-    id: string,
-    title: string,
-    price: number,
-    // prices: Array<ResultPrice>
-    condition: string,
+export interface Result extends GetItemResultBase {
     thumbnail: string,
-    shipping: {
-        free_shipping: boolean,
-    },
-    category_id: string,
-    currency_id: string
+    address: {
+        city_name: string
+    }
+}
+
+interface ResultFilter {
+    id: string,
+    name: string,
+    type: string,
+    values: {
+        id: string,
+        name: string,
+        path_from_root: {
+            id: string,
+            name: string
+        }[]
+    }[]
 }
 
 // export interface ResultPrice {

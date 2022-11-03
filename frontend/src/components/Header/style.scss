@@ -1,0 +1,19 @@
+@import '../../App.scss';
+
+.nav-header {
+    height: 64px;
+    background-color: $PRIMARY;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .nav-logo {
+        margin-right: 20px;
+
+        &:focus {
+            outline: 0.2px solid $LIGHT_GREY;
+        }
+    }
+
+}

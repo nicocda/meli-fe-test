@@ -1,5 +1,6 @@
 export default {
-    "origin": "*", //Cambiar cuando este implementado el front end
-    "methods": "GET", //Solo get
-    "optionsSuccessStatus": 200
+    origin: "http://localhost:3000",
+    methods: "GET", //Solo get
+    optionsSuccessStatus: 200,
+    allowedHeaders: '*'
 };

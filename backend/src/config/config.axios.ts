@@ -1,4 +1,5 @@
+
 export default {
-    baseURL: 'https://api.mercadolibre.com/sites/MLA/',
-    timeout: 20000,
+    baseURL: 'https://api.mercadolibre.com/',
+    timeout: 20000
 };

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --project ./",
-    "start": "node ./bin/src/index.js"
+    "start": "node ./bin/src/index.js",
+    "dev": "npm run build && npm run start",
+    "dev:watch": "nodemon --exec npm run dev"
   },
   "keywords": [],
   "author": "",
