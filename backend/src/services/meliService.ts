@@ -7,6 +7,7 @@ import { response } from 'express'
 import ResponseOne from '../model/response/ResponseOne'
 import { GetItemResponse } from '../model/GetItemResponse'
 import GetItemResultBase from '../model/GetItemResultBase'
+import Item from '../model/response/Item'
 
 
 export const getItems = async (text: string): Promise<ResponseData> => {
@@ -36,12 +37,21 @@ export const getOneItem = async (id: string): Promise<ResponseOne> => {
         throw { response: { statusText: 'Bad Request - id is empty', status: 400 } };
 
     const responseItem = await axios.get(`items/${id}`);
+
+    Promise.all([
+        axios.get(`items/${id}`),
+        axios.get<{ plain_text: string }>(`items/${id}/description`),
+    ]).then((responses) => {
+
+    })
+
     if (!response)
         throw { response: { statusText: 'External server return empty response', status: 500 } };
 
     if (!responseItem.data)
         throw { response: { statusText: 'External server return empty data', status: 500 } };
 
+    const item = responseItem.data as GetItemResponse;
 
     const responseDescription = await axios.get<{ plain_text: string }>(`items/${id}/description`);
 
@@ -52,9 +62,13 @@ export const getOneItem = async (id: string): Promise<ResponseOne> => {
         throw { response: { statusText: 'External server return empty description data', status: 500 } };
 
 
+    const responseCategories = await axios.get<{ path_from_root: { id: string, name: string }[] }>(`categories/${item.category_id}`);
+
+
+    const categoriesLikeStringArray = responseCategories.data.path_from_root ? responseCategories.data.path_from_root.map(p => p.name) : null
     //if not throw error,  map the item  
     // and assign his description
-    return itemTransform(responseItem.data as GetItemResponse, responseDescription.data.plain_text);
+    return itemTransform(item, responseDescription.data.plain_text, categoriesLikeStringArray);
 }
 
 
@@ -89,8 +103,8 @@ const dataTransform = (data: SearchDataResponse): ResponseData => {
     }
 }
 
-const itemTransform = (item: GetItemResponse, description: string): ResponseOne => {
-    let categories = [] as string[];
+const itemTransform = (item: GetItemResponse, description: string, categories: string[] | null): ResponseOne => {
+
     const author = configAuthor;
 
     return {
@@ -100,7 +114,8 @@ const itemTransform = (item: GetItemResponse, description: string): ResponseOne 
             sold_quantity: item.sold_quantity,
             description: description,
             picture: item.pictures ? item.pictures[0].url : ''
-        }
+        },
+        categories: categories
     }
 
 }
@@ -112,7 +127,7 @@ const baseItemTransform = (item: GetItemResultBase): any => {
         price: {
             currency: item.currency_id,
             amount: item.price,
-            decimals: 0
+            decimals: item.price.toString().includes('.') ? item.price.toString().split('.')[1].length : 0
         },
         picture: item.thumbnail,
         condition: item.condition,

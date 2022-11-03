@@ -9,6 +9,7 @@ export const Search = () => {
 
     const navigate = useNavigate();
 
+
     const handleSubmit = (e: SyntheticEvent) => {
         //Prevent Page Reload
         e.preventDefault();

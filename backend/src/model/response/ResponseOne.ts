@@ -3,5 +3,6 @@ import Item from "./Item";
 
 export default interface ResponseOne {
     author: Author,
-    item: Item
+    item: Item,
+    categories: string[] | null
 }

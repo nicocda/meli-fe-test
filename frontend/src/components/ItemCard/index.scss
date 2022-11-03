@@ -8,9 +8,14 @@ $BIG_MARGIN : 32px;
 //                 <img className='card-picture' alt='item-picture' src={item.picture} />
 //                 <div className='card-price
 
+.item-list-container {
+    width: 65%;
+    margin: auto;
+}
+
 .card-container {
     background-color: #FFFFFF;
-    width: 80%;
+    width: 100%;
     margin: auto;
     border-bottom: thin solid $BACKGROUND;
     padding: 0 32px;
@@ -22,7 +27,8 @@ $BIG_MARGIN : 32px;
     width: 180px;
     height: 180px;
     border-radius: 4px;
-    margin: $TINY_MARGIN
+    margin: $TINY_MARGIN;
+    object-fit: scale-down;
 }
 
 .item-detail {
@@ -31,6 +37,7 @@ $BIG_MARGIN : 32px;
     flex-wrap: wrap;
     width: 100%;
     margin-top: 32px;
+    padding-left: 35px;
 }
 
 .card-price-section {
@@ -43,6 +50,8 @@ $BIG_MARGIN : 32px;
     font-weight: 500;
     margin-bottom: $BIG_MARGIN;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
 }
 
 // .card-free-shiping-container {}

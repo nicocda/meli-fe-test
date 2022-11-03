@@ -1,8 +1,9 @@
 @import '../../App.scss';
 
-.breadcrumb {
+ul.breadcrumb {
     display: flex;
     flex-direction: row;
+    margin: 0;
 }
 
 .breadcrumb-item {
@@ -21,6 +22,5 @@
 
 
 .breadcrumb-container {
-    width: 85%;
-    margin-left: auto;
+    margin: 12px 0;
 }

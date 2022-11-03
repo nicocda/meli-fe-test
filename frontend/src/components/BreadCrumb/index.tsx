@@ -2,7 +2,11 @@ import React from 'react'
 import './index.scss'
 
 
-export const BreadCrumb = ({ steps }: { steps: string[] }) => {
+export const BreadCrumb = ({ steps }: { steps: string[] | null }) => {
+
+    if (!steps)
+        return (<></>);
+
     return (
         <>
             <div className='breadcrumb-container'>

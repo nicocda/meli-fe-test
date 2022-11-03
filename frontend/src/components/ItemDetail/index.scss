@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     background-color: white;
-    width: 95%;
+    width: 65%;
     margin: 25px auto;
     padding: 35px;
     height: auto;
@@ -12,15 +12,24 @@
 }
 
 
+
 .img-desc {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
 }
+
+.title-price {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
 
 .item-picture {
     width: 680px;
     height: 500px;
+    object-fit: scale-down;
 }
 
 .description-title {
@@ -36,15 +45,13 @@
     color: $LIGHT_GREY
 }
 
-.title-price {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
+
 
 .condition-solds {
     font-size: 14px;
     margin-top: 32px;
+    color: $LIGHT_GREY;
+
 }
 
 .item-title {
@@ -56,6 +63,8 @@
 .item-price {
     margin-top: 32px;
     font-size: 46px;
+    display: flex;
+    flex-direction: row;
 }
 
 .btn-buy {

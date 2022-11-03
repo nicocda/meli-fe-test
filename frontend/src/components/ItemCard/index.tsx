@@ -2,6 +2,8 @@ import Item from '../../model/Item'
 import './index.scss'
 import freeShipping from './../../assets/ic_shipping.png'
 import { useNavigate } from 'react-router-dom'
+import { PriceFormat } from '../PriceFormat'
+import { Price } from '../Price'
 
 type ItemCardProps = {
     item: Item
@@ -17,14 +19,16 @@ export const ItemCard = ({ item }: ItemCardProps) => {
         <>
             <div className='card-container'>
                 <a href={`/api/items/${item.id}`}>
-                    <div className='card-picture'>
+                    <div >
                         <img data-testid='item-picture' className='card-picture' alt='itempicture' src={item.picture} />
                     </div>
                 </a>
                 <div className='item-detail'>
                     <div className='card-price-section'>
                         <div onClick={handleClick}>
-                            <div data-testid='item-price' className='card-price'>$ {Intl.NumberFormat(item.price.currency).format(item.price.amount)} {item.price.currency}</div>
+                            <div data-testid='item-price' className='card-price'>
+                                <Price amount={item.price.amount} currency={item.price.currency} decimals={item.price.decimals} />
+                            </div>
                         </div>
                         <div onClick={handleClick}>
                             <div data-testid='item-shipping' className='card-free-shiping-container'>{item.free_shipping ? <img className='card-free-shipping-img' src={freeShipping} alt="free shipping"></img> : ''}</div>

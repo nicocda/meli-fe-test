@@ -43,14 +43,14 @@ export const ItemList = () => {
         );
 
     return (
-        <>
+        <div className='item-list-container'>
             < BreadCrumb steps={categories} />
             {
                 items.slice(0, 4).map(item => {
                     return <ItemCard key={item.id} item={item} />
                 })
             }
-        </>
+        </div>
     )
 }
 

@@ -1,5 +1,5 @@
 export default interface ItemPrice {
-    currency: string,
+    currency?: string,
     amount: number,
     decimals: number
 }
