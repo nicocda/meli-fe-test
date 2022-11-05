@@ -1,27 +1,38 @@
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { cleanup, render, screen, } from '@testing-library/react';
 import { ItemList } from '.';
-import datos from '../../data/dataItemsMock.json'
+import axiosMock from '../../Helper/axios'
+import data from '../../data/dataItemsMock.json'
+
+jest.mock('axios')
+
+describe('Item List', () => {
+
+    beforeEach(() => {
+        cleanup();
+        jest.clearAllMocks();
+    });
+
+    test('Get all', async () => {
+        axiosMock.get.mockResolvedValueOnce(data);
+
+        render(<ItemList />)
+        expect(screen.getByTestId('data-testid')).toBeInTheDocument();
+
+        const altgo = await screen.findByTestId('item-list-container');
+        expect(altgo).toBeInTheDocument();
 
 
-module.exports = {
-    get: jest.fn((url) => {
-        if (url === '/api/item/s') {
-            return Promise.resolve({
-                data: datos
-            });
-        }
-        return Promise.reject({ error: { status: 404, message: 'Not Found' } });
-    }),
-};
+    })
 
-const Element = <BrowserRouter>
-    <Routes>
-        <Route path='/api/item/search=televisor' element={<ItemList />} />
-    </Routes>
-</BrowserRouter>;
+    // const Element =
+    //     <Routes>
+    //         <ItemList />
+    //     </Routes>
 
-test('algo', () => {
-    render(Element);
-    expect(screen.getByText('no se')).toBeInTheDocument();
+    // render(Element);
+    // test('algo', () => {
+    //     expect(screen.getByText('Cargando...')).toBeInTheDocument();
+    // })
+
 })
+

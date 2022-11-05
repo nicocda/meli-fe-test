@@ -1,8 +1,9 @@
 
 import { Routes, Route, } from 'react-router-dom';
-import { ItemDetail } from './ItemDetail';
-import { ItemList } from './ItemList';
-import { RouterLayout } from './Router/RouterLayout';
+import { ItemDetail } from '../ItemDetail';
+import { ItemList } from '../ItemList';
+import { RouterLayout } from './RouterLayout';
+import { P404 } from '../NotFoundPage/404'
 
 export const Router = () => {
     return (
@@ -13,8 +14,10 @@ export const Router = () => {
                     <Route path={"/api/items"} element={<ItemList />} />
 
                     <Route path={"/api/items/:id"} element={<ItemDetail />} />
+                    <Route path={"*"} element={<P404 />} />
                 </Route>
             </Routes>
         </>
     )
 }
+

@@ -1,0 +1,32 @@
+@import '../../App.scss';
+
+.cards-container {
+    background-color: $BACKGROUND;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-list-container {
+    width: 65%;
+    margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
+}
+
+@media screen and (max-width: $MOBILE_MAX_WIDTH) {
+
+    .item-list-container {
+        width: 100%;
+
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}

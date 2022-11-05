@@ -17,7 +17,7 @@ describe('Price', () => {
 
         render(<Price itemPrice={{ amount: 12312, currency: 'ARS', decimals: 50 }} showCurrency={false} />);
         expect(screen.getByText('12.312')).toBeInTheDocument();
-        // expect.not.stringContaining('ARS').toBeInTheDocument();
+        // expect(screen.queryAllByTestId('price-currency')).not.toBeInTheDocument();
         expect(screen.getByText('50')).toBeInTheDocument();
     })
 })

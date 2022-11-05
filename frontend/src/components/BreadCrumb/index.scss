@@ -10,17 +10,30 @@ ul.breadcrumb {
     display: inline;
     font-size: 14px;
     color: $LIGHT_GREY;
-    cursor: pointer;
-
-    &+.breadcrumb-item:before {
-        padding: 0px 8px;
-        color: black;
-        content: ">";
-        cursor: default;
-    }
 }
 
 
 .breadcrumb-container {
     margin: 12px 0;
+    width: 100%;
+}
+
+.greater-separator {
+    font-size: 14px;
+    padding: 0px 8px;
+    color: $DARK_GREY;
+    cursor: default;
+}
+
+
+@media screen and (max-width: $MOBILE_MAX_WIDTH) {
+
+    .breadcrumb-item {
+        font-size: 12px;
+    }
+
+    .greater-separator {
+        font-size: 12px;
+    }
+
 }

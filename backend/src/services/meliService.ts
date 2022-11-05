@@ -61,7 +61,9 @@ export const getOneItem = async (id: string): Promise<ResponseOne> => {
                 return itemTransform(item, responseDescription.data.plain_text);
             })
     }).catch(error => {
-        throw { response: { statusText: error, status: 500 } };
+        if (error.status === 404)
+            throw { response: { statusText: 'Not Found', status: 404 } };
+        throw { response: { statusText: error.message, status: error.status } };
     })
 }
 
@@ -86,7 +88,7 @@ const dataTransform = (data: SearchDataResponse): ResponseData => {
 
         return {
             ...baseItemTransform(item),
-            picture: item.thumbnail,
+            picture: changePicture(item.thumbnail),
             location: item.address?.city_name
         }
     });
@@ -120,6 +122,11 @@ const mapPrice = (price: number) => {
     };
 }
 
+const changePicture = (pic: string) => {
+    //https://http2.mlstatic.com/D_NQ_NP_908764-MLA43208793399_082020-V.webp    --Web oficial MELI
+    // http://http2.mlstatic.com/D_908764-MLA43208793399_082020-I.jpg           --API
+    return pic.replace("http://http2.mlstatic.com/D_", "https://http2.mlstatic.com/D_NQ_NP_").replace('-I.jpg', '-V.webp');
+}
 const baseItemTransform = (item: GetItemResultBase): any => {
     return {
         id: item.id,

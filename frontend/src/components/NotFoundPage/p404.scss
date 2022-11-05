@@ -1,0 +1,42 @@
+@import '../../App.scss';
+
+.div404 {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    // background-color: rgb(246, 246, 246);
+    background-color: $BACKGROUND;
+
+}
+
+.img404 {
+    width: 250px;
+    height: 250px;
+    margin: 50px auto 0;
+}
+
+
+.logo404 {
+    margin: 50px auto 0;
+    font-size: 180px;
+    font-family: monospace;
+}
+
+.text404 {
+    color: $DARK_GREY;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 1.645em;
+    padding: 0 15px;
+    line-height: 1;
+
+}
+
+.a404 {
+    color: $LIGHT_GREY;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 2em;
+    padding: 0 30px;
+}

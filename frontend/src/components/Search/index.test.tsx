@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import router, { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Search } from '.';
 
 describe('Test from Search', () => {
