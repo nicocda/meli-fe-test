@@ -9,13 +9,13 @@ import img from './../../assets/Logo_ML.png'
 export const Header = () => {
     return (
         <>
-            <header className="nav-header">
+            <header data-testid='nav-header' className="nav-header">
                 <a href="/" className="nav-logo">
                     <div role="banner">
                         <img data-testid="img-logo" src={img} alt="logo" />
                     </div>
                 </a>
-                <Search />
+                <Search data-testid='search' />
             </header>
         </>
     )

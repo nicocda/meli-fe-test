@@ -26,7 +26,7 @@ export const ItemCard = ({ item }: ItemCardProps) => {
                     <div className='card-price-section'>
                         <div onClick={handleClick}>
                             <div data-testid='item-price' className='card-price'>
-                                <Price amount={item.price.amount} currency={item.price.currency} decimals={item.price.decimals} />
+                                <Price itemPrice={item.price} />
                             </div>
                         </div>
                         <div onClick={handleClick}>

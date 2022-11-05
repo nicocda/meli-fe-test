@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react'
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
 import searchIcon from './../../assets/ic_Search.png'
+import { Log } from '../../Helper/Log';
 
 
 
@@ -18,8 +19,15 @@ export const Search = () => {
             mainSearch: { value: string };
         };
 
-        if (!target || !target.mainSearch || !target.mainSearch.value)
-            return;
+        // const text = e && e.target && e.target.mainSearch && e.target.mainSearch.value
+
+
+        if (!target || !target.mainSearch || !target.mainSearch.value) {
+            Log("Searching without value")
+            navigate('/')
+        }
+
+        Log("Searching with: " + target.mainSearch.value)
 
         navigate(`/api/items?search=${target.mainSearch.value}`);
 

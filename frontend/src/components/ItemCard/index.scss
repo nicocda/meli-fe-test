@@ -1,7 +1,7 @@
 @import '../../App.scss';
 
-$TINY_MARGIN : 16px;
-$BIG_MARGIN : 32px;
+$MARGIN_16 : 16px;
+$MARGIN_32 : 32px;
 
 // card-title'>{item.title}</h1>
 //                 <div className='card-free-shiping-container'>{item.free_shipping ? 'Envio Gratis' : ''}</div>
@@ -31,7 +31,7 @@ $BIG_MARGIN : 32px;
     width: 180px;
     height: 180px;
     border-radius: 4px;
-    margin: $TINY_MARGIN;
+    margin: $MARGIN_16;
     object-fit: scale-down;
 }
 
@@ -52,7 +52,7 @@ $BIG_MARGIN : 32px;
 .card-price {
     font-size: 24px;
     font-weight: 500;
-    margin-bottom: $BIG_MARGIN;
+    margin-bottom: $MARGIN_32;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -61,7 +61,7 @@ $BIG_MARGIN : 32px;
 // .card-free-shiping-container {}
 
 .card-free-shipping-img {
-    margin-left: $TINY_MARGIN;
+    margin-left: $MARGIN_16;
     margin-top: 4px;
     width: 25px;
     height: 25px;
@@ -79,5 +79,5 @@ $BIG_MARGIN : 32px;
     font-size: 12px;
     text-align: left;
     width: 10%;
-
+    padding-top: $MARGIN_32
 }

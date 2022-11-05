@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import ResponseData from '../model/response/ResponseData'
 import { SearchDataResponse } from '../model/SearchDataResponse'
@@ -7,13 +6,11 @@ import { response } from 'express'
 import ResponseOne from '../model/response/ResponseOne'
 import { GetItemResponse } from '../model/GetItemResponse'
 import GetItemResultBase from '../model/GetItemResultBase'
-import Item from '../model/response/Item'
+import { Log } from './logService'
 
 
 export const getItems = async (text: string): Promise<ResponseData> => {
-    console.log('Api Service - getItems')
-
-    console.log("axios base: " + axios.defaults.baseURL)
+    Log('Get Items')
     const response = await axios.get<SearchDataResponse>('sites/MLA/search', { params: { q: text } });
 
     if (!response)
@@ -29,46 +26,43 @@ export const getItems = async (text: string): Promise<ResponseData> => {
 
 
 export const getOneItem = async (id: string): Promise<ResponseOne> => {
-    console.log('Api Service - getOneItem')
-
-    console.log("axios base: " + axios.defaults.baseURL)
+    Log('Get a Item')
 
     if (!id)
         throw { response: { statusText: 'Bad Request - id is empty', status: 400 } };
 
-    const responseItem = await axios.get(`items/${id}`);
-
-    Promise.all([
+    return Promise.all([
         axios.get(`items/${id}`),
         axios.get<{ plain_text: string }>(`items/${id}/description`),
     ]).then((responses) => {
 
+        const [responseItem, responseDescription] = responses;
+
+        if (!response)
+            throw { response: { statusText: 'External server return empty response', status: 500 } };
+
+        if (!responseItem.data)
+            throw { response: { statusText: 'External server return empty data', status: 500 } };
+
+        if (!responseDescription)
+            throw { response: { statusText: 'External server return empty description response', status: 500 } };
+
+        if (!responseDescription.data)
+            throw { response: { statusText: 'External server return empty description data', status: 500 } };
+
+
+        const item = responseItem.data as GetItemResponse;
+
+        //If find categories, return it in list of array
+        //If dont find categories or it fail, do nothing
+        return axios.get<{ path_from_root: { name: string }[] }>(`categories/${item.category_id}`)
+            .then(r => itemTransform(item, responseDescription.data.plain_text, r.data.path_from_root?.map(p => p.name)))
+            .catch(() => {
+                return itemTransform(item, responseDescription.data.plain_text);
+            })
+    }).catch(error => {
+        throw { response: { statusText: error, status: 500 } };
     })
-
-    if (!response)
-        throw { response: { statusText: 'External server return empty response', status: 500 } };
-
-    if (!responseItem.data)
-        throw { response: { statusText: 'External server return empty data', status: 500 } };
-
-    const item = responseItem.data as GetItemResponse;
-
-    const responseDescription = await axios.get<{ plain_text: string }>(`items/${id}/description`);
-
-    if (!responseDescription)
-        throw { response: { statusText: 'External server return empty description response', status: 500 } };
-
-    if (!responseDescription.data)
-        throw { response: { statusText: 'External server return empty description data', status: 500 } };
-
-
-    const responseCategories = await axios.get<{ path_from_root: { id: string, name: string }[] }>(`categories/${item.category_id}`);
-
-
-    const categoriesLikeStringArray = responseCategories.data.path_from_root ? responseCategories.data.path_from_root.map(p => p.name) : null
-    //if not throw error,  map the item  
-    // and assign his description
-    return itemTransform(item, responseDescription.data.plain_text, categoriesLikeStringArray);
 }
 
 
@@ -103,10 +97,8 @@ const dataTransform = (data: SearchDataResponse): ResponseData => {
     }
 }
 
-const itemTransform = (item: GetItemResponse, description: string, categories: string[] | null): ResponseOne => {
-
+const itemTransform = (item: GetItemResponse, description: string, categories?: string[]): ResponseOne => {
     const author = configAuthor;
-
     return {
         author: author,
         item: {
@@ -115,9 +107,17 @@ const itemTransform = (item: GetItemResponse, description: string, categories: s
             description: description,
             picture: item.pictures ? item.pictures[0].url : ''
         },
-        categories: categories
+        categories: categories || [] //if null is empty
     }
 
+}
+
+const mapPrice = (price: number) => {
+    const [left, right] = (price + '').split('.');
+    return {
+        amount: Number(left),
+        decimals: right ? Number(right.padEnd(2)) : 0 //if right is falsy then 0
+    };
 }
 
 const baseItemTransform = (item: GetItemResultBase): any => {
@@ -126,8 +126,7 @@ const baseItemTransform = (item: GetItemResultBase): any => {
         title: item.title,
         price: {
             currency: item.currency_id,
-            amount: item.price,
-            decimals: item.price.toString().includes('.') ? item.price.toString().split('.')[1].length : 0
+            ...mapPrice(item.price)
         },
         picture: item.thumbnail,
         condition: item.condition,

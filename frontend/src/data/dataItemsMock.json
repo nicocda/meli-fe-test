@@ -4,61 +4,69 @@
         "lastname": "Giordano"
     },
     "categories": [
-        "categories",
-        "not implemented yet",
-        "test"
+        "Electrónica, Audio y Video",
+        "Televisores"
     ],
     "items": [
         {
-            "id": "MLA1147529547",
-            "title": "Smart Tv Samsung Series 6 Qn55q60aagczb Qled 4k 55  220v - 240v",
-            "price": {
-                "currency": "ARS",
-                "amount": 207999,
-                "decimals": 0
-            },
-            "picture": "http://http2.mlstatic.com/D_646123-MLA48156948697_112021-I.jpg",
-            "condition": "new",
-            "free_shipping": true,
-            "location": "Rosario"
-        },
-        {
-            "id": "MLA1147686760",
+            "id": "MLA1132229645",
             "title": "Smart Tv Tcl P725-series 55p725 Dled 4k 55  100v/240v",
             "price": {
                 "currency": "ARS",
-                "amount": 122999,
+                "amount": 105999,
                 "decimals": 0
             },
             "picture": "http://http2.mlstatic.com/D_621435-MLA51571231623_092022-I.jpg",
             "condition": "new",
             "free_shipping": true,
-            "location": "Cañada Rosquin"
+            "location": "Campana",
+            "sold_quantity": -1,
+            "description": ""
         },
         {
-            "id": "MLA904833049",
-            "title": "Smart Tv Samsung Series 5 Un43t5300agczb Led Full Hd 43  220v - 240v",
+            "id": "MLA874870851",
+            "title": "Smart Tv Tedge Led 43 Pulgadas Ntv43hd Led Full Hd 43  220v",
             "price": {
                 "currency": "ARS",
-                "amount": 85999,
+                "amount": 59999,
                 "decimals": 0
             },
-            "picture": "http://http2.mlstatic.com/D_886670-MLA44628265236_012021-I.jpg",
+            "picture": "http://http2.mlstatic.com/D_908764-MLA43208793399_082020-I.jpg",
             "condition": "new",
             "free_shipping": true,
-            "location": "Galvez"
+            "location": "Villa Celina",
+            "sold_quantity": -1,
+            "description": ""
         },
         {
-            "id": "MLA1150190526",
-            "title": "Smart Tv Philips 65pud7906/77 Led 4k 65  110v/240v",
+            "id": "MLA1150461708",
+            "title": "Smart Tv Tcl L40s66e 40  Full Hd Android Tv",
             "price": {
                 "currency": "ARS",
-                "amount": 209999,
+                "amount": 57999,
                 "decimals": 0
             },
-            "picture": "http://http2.mlstatic.com/D_803275-MLA48707824564_122021-I.jpg",
+            "picture": "http://http2.mlstatic.com/D_680256-MLA51838363332_102022-I.jpg",
             "condition": "new",
-            "free_shipping": true
+            "free_shipping": true,
+            "location": "Villa Celina",
+            "sold_quantity": -1,
+            "description": ""
+        },
+        {
+            "id": "MLA1109741535",
+            "title": "Smart Tv Samsung Series 7 Un50au7000gczb Led 4k 50  220v - 240v",
+            "price": {
+                "currency": "ARS",
+                "amount": 118999,
+                "decimals": 0
+            },
+            "picture": "http://http2.mlstatic.com/D_787221-MLA48007684849_102021-I.jpg",
+            "condition": "new",
+            "free_shipping": true,
+            "location": "Villa Celina",
+            "sold_quantity": -1,
+            "description": ""
         }
     ]
 }

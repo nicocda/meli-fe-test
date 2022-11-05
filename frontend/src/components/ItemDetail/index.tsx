@@ -62,7 +62,7 @@ export const ItemDetail = () => {
                     <div className='condition-solds'>{TranslateCondition(item.condition)} - {item.sold_quantity > 0 ? item.sold_quantity : ''} vendidos</div>
                     <div className='item-title'>{item.title}</div>
                     <div className="item-price">
-                        <Price amount={item.price?.amount} decimals={item.price?.decimals} />
+                        <Price itemPrice={item.price} showCurrency={false} />
                     </div>
                     <button type='submit' className='btn-buy'>Comprar</button>
                 </div>

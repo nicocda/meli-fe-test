@@ -5,6 +5,8 @@ import { ItemCard } from '../ItemCard/index';
 import Item from '../../model/Item';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Error } from './../Error/index'
+import { Log } from '../../Helper/Log';
 
 
 export const ItemList = () => {
@@ -29,8 +31,10 @@ export const ItemList = () => {
                     setItems(response.data.items);
             }
         }).catch(error => {
-
-        }).finally(() => setLoading(false));
+            return (<Error error={error.message} />)
+        }).finally(() => {
+            setLoading(false);
+        });
 
         //Suprimo advertencia, xq si lo configuro como me lo pide loopea infinito
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,17 +44,16 @@ export const ItemList = () => {
         return (<>Cargando...</>)
 
     if (!searchText)
-        return (<>Sin texto</>);
+        return (<Error error={'Sin Texto'} />)
 
     if (!items)
-        return (
-            < label > No se encontraron Items acorde a la descripcion</label >
-        );
+        return (<Error error={' No se encontraron Items acorde a la descripcion'} />);
 
     return (
         <div className='item-list-container'>
             < BreadCrumb steps={categories} />
             {
+                //Solo muestra los primeros 4 elementos
                 items.slice(0, 4).map(item => {
                     return <ItemCard key={item.id} item={item} />
                 })

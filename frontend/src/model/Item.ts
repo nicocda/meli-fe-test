@@ -1,4 +1,4 @@
-
+import ItemPrice from "./ItemPrice";
 
 export default interface Item {
     id: string,
@@ -10,10 +10,4 @@ export default interface Item {
     location: string,
     sold_quantity: number,
     description: string
-}
-
-interface ItemPrice {
-    currency: string,
-    amount: number,
-    decimals: number
 }
