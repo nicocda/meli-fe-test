@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import Item from '../../model/Item';
 import ResponseOne from '../../model/ResponseOne';
 import { BreadCrumb } from '../BreadCrumb';
@@ -9,6 +9,7 @@ import { Price } from '../Price';
 import './index.scss'
 import { Error } from '../Error'
 
+
 const TranslateCondition = (condition: string): string => {
     //Condition has 2 posible valors in all test that i did, new and used
 
@@ -16,18 +17,19 @@ const TranslateCondition = (condition: string): string => {
         return 'Nuevo';
     if (condition === 'used')
         return 'Usado';
-    //Si no es uno de esos devuelve vacio
+    //Si no es uno de esos devuelve v   acio
     return '';
 }
 
 export const ItemDetail = () => {
-    const params = useParams();
+    // const params = useParams();
     const [item, setItem] = useState<Item | null>(null);
     const [categories, setCategories] = useState<string[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const id = params.id;
+    // const id = params.id;
+    const id = "MLA1150461708";
     useEffect(() => {
 
         axios.get<ResponseOne>(`api/items/${id}`)

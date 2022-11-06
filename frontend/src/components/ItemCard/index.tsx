@@ -3,6 +3,7 @@ import './index.scss'
 import freeShipping from './../../assets/ic_shipping.png'
 import { useNavigate } from 'react-router-dom'
 import { Price } from '../Price'
+import { Log } from '../../Helper/Log'
 
 type ItemCardProps = {
     item: Item
@@ -12,13 +13,13 @@ export const ItemCard = ({ item }: ItemCardProps) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/api/items/${item.id}`);
+        navigate(`/items/${item.id}`);
     }
     return (
         <>
             <div className='card-container'>
                 <div className='card-item-picture'>
-                    <a href={`/api/items/${item.id}`}>
+                    <a href={`/items/${item.id}`}>
                         <img data-testid='item-picture' className='card-picture' alt='itempicture' src={item.picture} />
                     </a>
                 </div>

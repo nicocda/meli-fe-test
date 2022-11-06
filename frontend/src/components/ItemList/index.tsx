@@ -17,16 +17,22 @@ export const ItemList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
+    const ClearAll = () => {
+        setCategories([]);
+        setItems([]);
+        setLoading(false);
+        Log("Clear 'cause is empty")
+    }
 
     const searchText = query.get('search');
     useEffect(() => {
 
+        //Antes de que llegue la informacion, para que no renderize cosas a medias cargo un loading
         setLoading(true);
 
+        //Si no hay texto para buscar limpio los campos
         if (!searchText) {
-            setCategories([]);
-            setItems([]);
-            setLoading(false);
+            ClearAll();
         }
 
         if (searchText)
@@ -40,9 +46,7 @@ export const ItemList = () => {
                     Log(response.data.items.length + ' items were set');
                 }
                 else {
-                    setCategories([]);
-                    setItems([]);
-                    Log("Clear 'cause is empty")
+                    ClearAll();
                 }
             }).catch(err => {
                 setError(err.message);

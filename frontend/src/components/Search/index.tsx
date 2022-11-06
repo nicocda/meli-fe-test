@@ -29,7 +29,7 @@ export const Search = () => {
 
         Log("Searching with: " + target.mainSearch.value)
 
-        navigate(`/api/items?search=${target.mainSearch.value}`);
+        navigate(`/items?search=${target.mainSearch.value}`);
 
     }
 

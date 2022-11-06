@@ -118,7 +118,7 @@ const mapPrice = (price: number) => {
     const [left, right] = (price + '').split('.');
     return {
         amount: Number(left),
-        decimals: right ? Number(right.padEnd(2)) : 0 //if right is falsy then 0
+        decimals: right ? Number(right.padEnd(2, '0')) : 0 //if right is falsy then 0
     };
 }
 
