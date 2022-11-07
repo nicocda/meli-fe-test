@@ -10,12 +10,11 @@ export const Router = () => {
         <>
             <Routes>
                 <Route path="/" element={<RouterLayout />} >
-                    <Route path="/" element={<></>} />
-                    <Route path={"/items"} element={<ItemList />} />
-
-                    <Route path={"/items/:id"} element={<ItemDetail />} />
-                    <Route path={"*"} element={<P404 />} />
+                    {/* <Route path="/" element={<></>} /> */}
+                    <Route path={"items"} element={<ItemList />} />
+                    <Route path={"items/:id"} element={<ItemDetail />} />
                 </Route>
+                <Route path={"*"} element={<P404 />} />
             </Routes>
         </>
     )

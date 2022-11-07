@@ -1,10 +1,20 @@
 import { cleanup, render, screen, } from '@testing-library/react';
 import { ItemList } from '.';
-import axiosMock from '../../Helper/axios'
+import axios from 'axios'
 import data from '../../data/dataItemsMock.json'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-jest.mock('axios')
+jest.mock('axios', () => ({
+    get: jest.fn(),
+}))
 
+const Element = (text: string): JSX.Element => {
+    return (<BrowserRouter>
+        <Routes>
+            <Route path="/" element={<ItemList text={text} />} />
+        </Routes>
+    </BrowserRouter>)
+}
 describe('Item List', () => {
 
     beforeEach(() => {
@@ -12,27 +22,48 @@ describe('Item List', () => {
         jest.clearAllMocks();
     });
 
-    test('Get all', async () => {
-        axiosMock.get.mockResolvedValueOnce(data);
+    test('Cargando', async () => {
+        (axios.get as jest.Mock).mockResolvedValueOnce({ data: data });
+        render(Element('algo'));
 
-        render(<ItemList />)
-        expect(screen.getByTestId('data-testid')).toBeInTheDocument();
-
-        const altgo = await screen.findByTestId('item-list-container');
-        expect(altgo).toBeInTheDocument();
-
-
+        expect(screen.getByTestId('loading')).toBeInTheDocument();
     })
 
-    // const Element =
-    //     <Routes>
-    //         <ItemList />
-    //     </Routes>
+    test('Empty text', async () => {
+        render(Element(''));
 
-    // render(Element);
-    // test('algo', () => {
-    //     expect(screen.getByText('Cargando...')).toBeInTheDocument();
-    // })
+        const error = await screen.findByTestId('error');
+        expect(error).toHaveTextContent(/Ingrese un parametro de busqueda/i);
+    })
+
+    test('Empty items', async () => {
+        (axios.get as jest.Mock).mockResolvedValueOnce({ data: { items: [] } });
+        render(Element('algo'));
+
+        const error = await screen.findByTestId('error');
+        expect(error).toHaveTextContent(/No se encontraron Items acorde a la descripcion/i);
+    })
+
+    test('Get success', async () => {
+        (axios.get as jest.Mock).mockResolvedValueOnce({ data: data });
+        render(Element('algo'));
+
+        const itemContainer = await screen.findByTestId('item-list-container');
+        expect(itemContainer).toBeInTheDocument();
+        expect(screen.getByText("Electrónica, Audio y Video")).toBeInTheDocument();
+        expect(screen.getAllByTestId('item')).toHaveLength(4);
+    })
+
+
+    test('Get error', async () => {
+        const msg = 'Ocurrio un error';
+        (axios.get as jest.Mock).mockRejectedValue({ message: msg });
+        render(Element('algo'));
+
+        const error = await screen.findByTestId('error');
+        expect(error).toHaveTextContent(msg);
+    })
+
 
 })
 

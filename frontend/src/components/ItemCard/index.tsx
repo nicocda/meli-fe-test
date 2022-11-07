@@ -1,9 +1,8 @@
 import Item from '../../model/Item'
 import './index.scss'
 import freeShipping from './../../assets/ic_shipping.png'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Price } from '../Price'
-import { Log } from '../../Helper/Log'
 
 type ItemCardProps = {
     item: Item
@@ -17,11 +16,11 @@ export const ItemCard = ({ item }: ItemCardProps) => {
     }
     return (
         <>
-            <div className='card-container'>
+            <div className='card-container' data-testid='item'>
                 <div className='card-item-picture'>
-                    <a href={`/items/${item.id}`}>
+                    <Link to={`/items/${item.id}`}>
                         <img data-testid='item-picture' className='card-picture' alt='itempicture' src={item.picture} />
-                    </a>
+                    </Link>
                 </div>
                 <div className='item-detail'>
                     <div className='card-price-section'>
@@ -31,7 +30,7 @@ export const ItemCard = ({ item }: ItemCardProps) => {
                             </div>
                         </div>
                         <div onClick={handleClick}>
-                            <div data-testid='item-shipping' className='card-free-shiping-container'>{item.free_shipping ? <img className='card-free-shipping-img' src={freeShipping} alt="free shipping" title="Envio Gratis"></img> : ''}</div>
+                            <div className='card-free-shiping-container'>{item.free_shipping ? <img data-testid='item-shipping' className='card-free-shipping-img' src={freeShipping} alt="free shipping" title="Envio Gratis"></img> : ''}</div>
                         </div>
 
                     </div>

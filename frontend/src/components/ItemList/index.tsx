@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react';
 import { Error } from './../Error/index'
 import { Log } from '../../Helper/Log';
 import { Loading } from '../Loading/index'
-import { getAll } from '../../Helper/apiService';
 import './index.scss'
+import axios from 'axios';
+import ResponseData from '../../model/ResponseData';
 
-export const ItemList = () => {
+export const ItemList = ({ text }: { text?: string }) => {
 
     const [query] = useSearchParams();
     const [categories, setCategories] = useState<string[]>([])
@@ -24,7 +25,7 @@ export const ItemList = () => {
         Log("Clear 'cause is empty")
     }
 
-    const searchText = query.get('search');
+    const searchText = text || query.get('search');
     useEffect(() => {
 
         //Antes de que llegue la informacion, para que no renderize cosas a medias cargo un loading
@@ -36,9 +37,10 @@ export const ItemList = () => {
         }
 
         if (searchText)
-            getAll(searchText).then((response) => {
+            axios.get<ResponseData>(`api/items?search=${searchText}`).then((response) => {
 
                 if (response && response.data) {
+                    Log('data: ' + JSON.stringify(response.data));
                     if (categories !== response.data.categories)
                         setCategories(response.data.categories);
                     if (items !== response.data.items)
@@ -56,13 +58,10 @@ export const ItemList = () => {
 
         //Suprimo advertencia, xq si lo configuro como me lo pide loopea infinito
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchText, error])
+    }, [searchText])
 
     if (loading)
         return (<Loading />)
-
-    if (!searchText)
-        return (<Error error={'Ingrese un parametro de busqueda'} />)
 
     if (error)
         return (<Error error={error} />)
@@ -81,6 +80,9 @@ export const ItemList = () => {
                 </div>
             </div>
         )
+
+    if (!searchText)
+        return (<Error error={'Ingrese un parametro de busqueda'} />)
 
 
     return (<Error error={' No se encontraron Items acorde a la descripcion'} />);

@@ -8,6 +8,6 @@ export const Error = ({ error }: { error: string }) => {
 
     Log('inside Error ' + error);
     return (
-        <div className='error-message'>{error}</div>
+        <div className='error-message' data-testid='error'>{error}</div>
     )
 }

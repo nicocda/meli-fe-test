@@ -1,5 +1,8 @@
+import { FormatDate } from './FormatDateString';
+
 export const Log = (text: string) => {
-    const time = new Date();
-    const user = "NN";
-    return console.log(`time: ${time.toDateString()} ${time.toTimeString()}, user: ${user}, log: ${text}`)
+    const now = new Date();
+    return console.log(`time: ${FormatDate(now)}, msg: ${text}`)
 }
+
+

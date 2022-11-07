@@ -1,21 +1,26 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Search } from '.';
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockedUsedNavigate,
+}));
+
+
+beforeEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+});
+
 describe('Test from Search', () => {
 
-    const mockedNavigator = jest.fn();
-
-    jest.mock('react-router-dom', () => ({
-        ...jest.requireActual('react-router-dom') as any,
-        useNavigate: () => ({
-            navigate: mockedNavigator
-        }),
-    }));
-
+    //Search is contained inside Header
     const Element = <BrowserRouter>
         <Routes>
-            <Route path='' element={<Search />} />
+            <Route path='*' element={<Search />} />
         </Routes>
     </BrowserRouter>;
 
@@ -26,30 +31,31 @@ describe('Test from Search', () => {
         expect(screen.getByTestId('main-search-button-img')).toBeInTheDocument();
     })
 
-    // test('Handle Submit with Televisor text', () => {
+    test('Handle Submit with Televisor text', async () => {
 
-    //     render(Element);
-    //     const component = screen.getByTestId('main-search');
-    //     fireEvent.change(component, { target: { value: 'televisor' } });
-    //     fireEvent.click(screen.getByTestId('main-search-button'), {});
+        render(Element);
 
-    //     expect(mockedNavigator).toHaveBeenCalledTimes(1)
-    //     expect(mockedNavigator).toHaveBeenCalledWith('/api/items?search=televisor')
+        const component = screen.getByRole('textbox', { name: '' });
+        fireEvent.change(component, { target: { value: 'televisor' } });
+        fireEvent.click(screen.getByTestId('main-search-button'), {});
 
-    // })
+        expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/items?search=televisor');
+    })
 
 
-    // test('Handle Submit without text', () => {
+    test('Handle Submit without text', () => {
 
-    //     render(Element);
-    //     const component = screen.getByTestId('main-search');
-    //     fireEvent.change(component, { target: { value: '' } });
-    //     fireEvent.keyDown(component, { key: 'Enter', code: 'Enter', charCode: 13 });
+        render(Element);
 
-    //     expect(mockedNavigator).toHaveBeenCalledTimes(1)
-    //     expect(mockedNavigator).toHaveBeenCalledWith('/')
+        const component = screen.getByRole('textbox', { name: '' });
+        fireEvent.change(component, { target: { value: '' } });
+        fireEvent.click(screen.getByTestId('main-search-button'), {});
 
-    // })
+        expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+
+    })
 
 
 })
