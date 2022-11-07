@@ -42,6 +42,7 @@ export const ItemDetail = () => {
                     setCategories([]);
                     setLoading(false);
                 }
+                setErrorMessage('');
             })
             .catch(error => {
                 setErrorMessage(error.message);

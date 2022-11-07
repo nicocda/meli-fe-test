@@ -50,6 +50,9 @@ export const ItemList = ({ text }: { text?: string }) => {
                 else {
                     ClearAll();
                 }
+
+                //If throw an error one time, need to clear log
+                setError('');
             }).catch(err => {
                 setError(err.message);
             }).finally(() => {
