@@ -3,7 +3,8 @@
 #Correr el backend
 
 cd backend
-npm start
+npm install (1 ra vez)
+npm run dev
 
 Por defecto corre en el localhost con puerto 3001
 
@@ -14,6 +15,7 @@ en la constante backendUrl
 #Correr front end
 
 cd frontend
+npm install (1ra vez)
 npm start
 
 Por defecto corre en localhsot con puerto 3000
